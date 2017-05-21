@@ -19,53 +19,12 @@ SET default_with_oids = false;
 -- Name: util_provincia; Type: TABLE; Schema: public; Owner: dpga; Tablespace: 
 --
 
-CREATE TABLE util_provincia (
-    id integer NOT NULL,
-    is_active boolean NOT NULL,
-    created_on timestamp with time zone,
-    modified_on timestamp with time zone,
-    nombre character varying(60) NOT NULL,
-    created_by_id integer,
-    modified_by_id integer,
-    pais_id integer
-);
-
-
-ALTER TABLE util_provincia OWNER TO dpga;
-
---
--- Name: util_provincia_id_seq; Type: SEQUENCE; Schema: public; Owner: dpga
---
-
-CREATE SEQUENCE util_provincia_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE util_provincia_id_seq OWNER TO dpga;
-
---
--- Name: util_provincia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dpga
---
-
-ALTER SEQUENCE util_provincia_id_seq OWNED BY util_provincia.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_provincia ALTER COLUMN id SET DEFAULT nextval('util_provincia_id_seq'::regclass);
-
 
 --
 -- Data for Name: util_provincia; Type: TABLE DATA; Schema: public; Owner: dpga
 --
 
-COPY util_provincia (id, is_active, created_on, modified_on, nombre, created_by_id, modified_by_id, pais_id) FROM stdin;
+COPY utils_provincia (id, is_active, created_on, modified_on, nombre, created_by_id, modified_by_id, pais_id) FROM stdin;
 1	t	2017-05-16 21:32:50.884899-03	2017-05-16 21:32:50.889881-03	BUENOS AIRES	\N	\N	\N
 2	t	2017-05-16 21:32:50.894042-03	2017-05-16 21:32:50.897996-03	CATAMARCA	\N	\N	\N
 3	t	2017-05-16 21:32:50.901527-03	2017-05-16 21:32:50.904601-03	CHACO	\N	\N	\N
@@ -91,65 +50,6 @@ COPY util_provincia (id, is_active, created_on, modified_on, nombre, created_by_
 23	t	2017-05-16 21:32:51.01539-03	2017-05-16 21:32:51.017903-03	TUCUMAN	\N	\N	\N
 \.
 
-
---
--- Name: util_provincia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dpga
---
-
-SELECT pg_catalog.setval('util_provincia_id_seq', 1, false);
-
-
---
--- Name: util_provincia_pkey; Type: CONSTRAINT; Schema: public; Owner: dpga; Tablespace: 
---
-
-ALTER TABLE ONLY util_provincia
-    ADD CONSTRAINT util_provincia_pkey PRIMARY KEY (id);
-
-
---
--- Name: util_provincia_created_by_id_1f4c80eb; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_provincia_created_by_id_1f4c80eb ON util_provincia USING btree (created_by_id);
-
-
---
--- Name: util_provincia_modified_by_id_ebc3d258; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_provincia_modified_by_id_ebc3d258 ON util_provincia USING btree (modified_by_id);
-
-
---
--- Name: util_provincia_pais_id_e0c2d94c; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_provincia_pais_id_e0c2d94c ON util_provincia USING btree (pais_id);
-
-
---
--- Name: util_provincia_created_by_id_1f4c80eb_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_provincia
-    ADD CONSTRAINT util_provincia_created_by_id_1f4c80eb_fk_auth_user_id FOREIGN KEY (created_by_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: util_provincia_modified_by_id_ebc3d258_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_provincia
-    ADD CONSTRAINT util_provincia_modified_by_id_ebc3d258_fk_auth_user_id FOREIGN KEY (modified_by_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: util_provincia_pais_id_e0c2d94c_fk_util_pais_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_provincia
-    ADD CONSTRAINT util_provincia_pais_id_e0c2d94c_fk_util_pais_id FOREIGN KEY (pais_id) REFERENCES util_pais(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --

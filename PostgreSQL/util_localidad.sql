@@ -15,58 +15,12 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
---
--- Name: util_localidad; Type: TABLE; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE TABLE util_localidad (
-    id integer NOT NULL,
-    is_active boolean NOT NULL,
-    created_on timestamp with time zone,
-    modified_on timestamp with time zone,
-    nombre character varying(100) NOT NULL,
-    cod_postal integer,
-    created_by_id integer,
-    departamento_id integer NOT NULL,
-    modified_by_id integer
-);
-
-
-ALTER TABLE util_localidad OWNER TO dpga;
-
---
--- Name: util_localidad_id_seq; Type: SEQUENCE; Schema: public; Owner: dpga
---
-
-CREATE SEQUENCE util_localidad_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE util_localidad_id_seq OWNER TO dpga;
-
---
--- Name: util_localidad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dpga
---
-
-ALTER SEQUENCE util_localidad_id_seq OWNED BY util_localidad.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_localidad ALTER COLUMN id SET DEFAULT nextval('util_localidad_id_seq'::regclass);
-
 
 --
 -- Data for Name: util_localidad; Type: TABLE DATA; Schema: public; Owner: dpga
 --
 
-COPY util_localidad (id, is_active, created_on, modified_on, nombre, cod_postal, created_by_id, departamento_id, modified_by_id) FROM stdin;
+COPY utils_localidad (id, is_active, created_on, modified_on, nombre, cod_postal, created_by_id, departamento_id, modified_by_id) FROM stdin;
 1	t	2017-05-16 22:03:40.081105-03	2017-05-16 22:03:40.084121-03	16 DE JULIO	\N	\N	1	\N
 2	t	2017-05-16 22:03:40.087471-03	2017-05-16 22:03:40.090287-03	17 DE AGOSTO	\N	\N	2	\N
 3	t	2017-05-16 22:03:40.093468-03	2017-05-16 22:03:40.09588-03	20 DE JUNIO	\N	\N	3	\N
@@ -5508,64 +5462,6 @@ COPY util_localidad (id, is_active, created_on, modified_on, nombre, cod_postal,
 \.
 
 
---
--- Name: util_localidad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dpga
---
-
-SELECT pg_catalog.setval('util_localidad_id_seq', 1, false);
-
-
---
--- Name: util_localidad_pkey; Type: CONSTRAINT; Schema: public; Owner: dpga; Tablespace: 
---
-
-ALTER TABLE ONLY util_localidad
-    ADD CONSTRAINT util_localidad_pkey PRIMARY KEY (id);
-
-
---
--- Name: util_localidad_created_by_id_1f449618; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_localidad_created_by_id_1f449618 ON util_localidad USING btree (created_by_id);
-
-
---
--- Name: util_localidad_departamento_id_c42edf53; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_localidad_departamento_id_c42edf53 ON util_localidad USING btree (departamento_id);
-
-
---
--- Name: util_localidad_modified_by_id_74242f77; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_localidad_modified_by_id_74242f77 ON util_localidad USING btree (modified_by_id);
-
-
---
--- Name: util_localidad_created_by_id_1f449618_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_localidad
-    ADD CONSTRAINT util_localidad_created_by_id_1f449618_fk_auth_user_id FOREIGN KEY (created_by_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: util_localidad_departamento_id_c42edf53_fk_util_departamento_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_localidad
-    ADD CONSTRAINT util_localidad_departamento_id_c42edf53_fk_util_departamento_id FOREIGN KEY (departamento_id) REFERENCES util_departamento(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: util_localidad_modified_by_id_74242f77_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_localidad
-    ADD CONSTRAINT util_localidad_modified_by_id_74242f77_fk_auth_user_id FOREIGN KEY (modified_by_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --

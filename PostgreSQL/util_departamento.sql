@@ -15,57 +15,12 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
---
--- Name: util_departamento; Type: TABLE; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE TABLE util_departamento (
-    id integer NOT NULL,
-    is_active boolean NOT NULL,
-    created_on timestamp with time zone,
-    modified_on timestamp with time zone,
-    nombre character varying(60) NOT NULL,
-    created_by_id integer,
-    modified_by_id integer,
-    provincia_id integer NOT NULL
-);
-
-
-ALTER TABLE util_departamento OWNER TO dpga;
-
---
--- Name: util_departamento_id_seq; Type: SEQUENCE; Schema: public; Owner: dpga
---
-
-CREATE SEQUENCE util_departamento_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE util_departamento_id_seq OWNER TO dpga;
-
---
--- Name: util_departamento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dpga
---
-
-ALTER SEQUENCE util_departamento_id_seq OWNED BY util_departamento.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_departamento ALTER COLUMN id SET DEFAULT nextval('util_departamento_id_seq'::regclass);
-
 
 --
 -- Data for Name: util_departamento; Type: TABLE DATA; Schema: public; Owner: dpga
 --
 
-COPY util_departamento (id, is_active, created_on, modified_on, nombre, created_by_id, modified_by_id, provincia_id) FROM stdin;
+COPY utils_departamento (id, is_active, created_on, modified_on, nombre, created_by_id, modified_by_id, provincia_id) FROM stdin;
 2	t	2017-05-16 21:40:59.00169-03	2017-05-16 21:40:59.006976-03	PUAN	\N	\N	1
 3	t	2017-05-16 21:40:59.011778-03	2017-05-16 21:40:59.014742-03	LA MATANZA	\N	\N	1
 4	t	2017-05-16 21:40:59.019357-03	2017-05-16 21:40:59.022744-03	TIGRE	\N	\N	1
@@ -642,64 +597,6 @@ COPY util_departamento (id, is_active, created_on, modified_on, nombre, created_
 \.
 
 
---
--- Name: util_departamento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dpga
---
-
-SELECT pg_catalog.setval('util_departamento_id_seq', 1, false);
-
-
---
--- Name: util_departamento_pkey; Type: CONSTRAINT; Schema: public; Owner: dpga; Tablespace: 
---
-
-ALTER TABLE ONLY util_departamento
-    ADD CONSTRAINT util_departamento_pkey PRIMARY KEY (id);
-
-
---
--- Name: util_departamento_created_by_id_efc1a801; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_departamento_created_by_id_efc1a801 ON util_departamento USING btree (created_by_id);
-
-
---
--- Name: util_departamento_modified_by_id_82ca644e; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_departamento_modified_by_id_82ca644e ON util_departamento USING btree (modified_by_id);
-
-
---
--- Name: util_departamento_provincia_id_29dc7f70; Type: INDEX; Schema: public; Owner: dpga; Tablespace: 
---
-
-CREATE INDEX util_departamento_provincia_id_29dc7f70 ON util_departamento USING btree (provincia_id);
-
-
---
--- Name: util_departamento_created_by_id_efc1a801_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_departamento
-    ADD CONSTRAINT util_departamento_created_by_id_efc1a801_fk_auth_user_id FOREIGN KEY (created_by_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: util_departamento_modified_by_id_82ca644e_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_departamento
-    ADD CONSTRAINT util_departamento_modified_by_id_82ca644e_fk_auth_user_id FOREIGN KEY (modified_by_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: util_departamento_provincia_id_29dc7f70_fk_util_provincia_id; Type: FK CONSTRAINT; Schema: public; Owner: dpga
---
-
-ALTER TABLE ONLY util_departamento
-    ADD CONSTRAINT util_departamento_provincia_id_29dc7f70_fk_util_provincia_id FOREIGN KEY (provincia_id) REFERENCES util_provincia(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
