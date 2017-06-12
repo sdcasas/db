@@ -24,7 +24,7 @@ SET default_with_oids = false;
 -- Data for Name: util_provincia; Type: TABLE DATA; Schema: public; Owner: dpga
 --
 
-COPY utils_provincia (id, is_active, created_on, modified_on, nombre, created_by_id, modified_by_id, pais_id) FROM stdin;
+COPY util_provincia (id, is_active, created_on, modified_on, nombre, created_by_id, modified_by_id, pais_id) FROM stdin;
 1	t	2017-05-16 21:32:50.884899-03	2017-05-16 21:32:50.889881-03	BUENOS AIRES	\N	\N	\N
 2	t	2017-05-16 21:32:50.894042-03	2017-05-16 21:32:50.897996-03	CATAMARCA	\N	\N	\N
 3	t	2017-05-16 21:32:50.901527-03	2017-05-16 21:32:50.904601-03	CHACO	\N	\N	\N

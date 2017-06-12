@@ -20,7 +20,7 @@ SET default_with_oids = false;
 -- Data for Name: util_departamento; Type: TABLE DATA; Schema: public; Owner: dpga
 --
 
-COPY utils_departamento (id, is_active, created_on, modified_on, nombre, created_by_id, modified_by_id, provincia_id) FROM stdin;
+COPY util_departamento (id, is_active, created_on, modified_on, nombre, created_by_id, modified_by_id, provincia_id) FROM stdin;
 2	t	2017-05-16 21:40:59.00169-03	2017-05-16 21:40:59.006976-03	PUAN	\N	\N	1
 3	t	2017-05-16 21:40:59.011778-03	2017-05-16 21:40:59.014742-03	LA MATANZA	\N	\N	1
 4	t	2017-05-16 21:40:59.019357-03	2017-05-16 21:40:59.022744-03	TIGRE	\N	\N	1
