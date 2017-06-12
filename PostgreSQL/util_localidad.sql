@@ -11,16 +11,11 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
-
 --
--- Data for Name: util_localidad; Type: TABLE DATA; Schema: public; Owner: dpga
+-- Data for Name: utils_localidad; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY util_localidad (id, is_active, created_on, modified_on, nombre, cod_postal, created_by_id, departamento_id, modified_by_id) FROM stdin;
+COPY utils_localidad (id, is_active, created_on, modified_on, nombre, cod_postal, created_by_id, departamento_id, modified_by_id) FROM stdin;
 1	t	2017-05-16 22:03:40.081105-03	2017-05-16 22:03:40.084121-03	16 DE JULIO	\N	\N	1	\N
 2	t	2017-05-16 22:03:40.087471-03	2017-05-16 22:03:40.090287-03	17 DE AGOSTO	\N	\N	2	\N
 3	t	2017-05-16 22:03:40.093468-03	2017-05-16 22:03:40.09588-03	20 DE JUNIO	\N	\N	3	\N
@@ -5462,6 +5457,11 @@ COPY util_localidad (id, is_active, created_on, modified_on, nombre, cod_postal,
 \.
 
 
+--
+-- Name: utils_localidad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('utils_localidad_id_seq', 1, true);
 
 
 --
